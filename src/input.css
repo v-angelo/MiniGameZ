@@ -3,6 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+    --font-game: 'Courier New', Courier, monospace;
+
     --breakpoint-xs: 30rem;
     --breakpoint-md: 53rem;
     --breakpoint-3xl: 121rem;
