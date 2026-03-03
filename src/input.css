@@ -5,7 +5,7 @@
 @theme {
     --font-game: 'Courier New', Courier, monospace;
 
-    --breakpoint-xs: 30rem;
+    --breakpoint-xs: 32rem;
     --breakpoint-md: 53rem;
     --breakpoint-3xl: 121rem;
     --animate-slideDown: openMenu 0.5s ease-in-out forwards;
