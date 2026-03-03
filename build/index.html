@@ -32,7 +32,7 @@
           <div class="flex w-70 justify-between max-sm:hidden">
             <a href="#hero" class="cursor-pointer hover:opacity-90">Home</a>
             <a href="#games" class="cursor-pointer hover:opacity-90">Games</a>
-            <span class="cursor-pointer hover:opacity-90">Score</span>
+            <a href="#scores" class="cursor-pointer hover:opacity-90">Score</a>
           </div>
           <!-- dark/light icons -->
           <div class="ms-5 text-amber-500 hover:text-amber-600 cursor-pointer">
@@ -85,15 +85,15 @@
       <!-- games section -->
       <section
         id="games"
-        class="max-sm:min-h-[calc(100vh-68px)] lg:min-h-[calc(100vh-68px)] p-6 max-xs:p-0 my-12 scroll-m-20"
+        class="max-sm:min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-64px)] p-6 max-xs:p-0 my-10 scroll-m-15"
       >
         <h2
-          class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white"
+          class="text-4xl font-bold text-center sm:text-5xl text-slate-900 dark:text-white"
         >
           Our Games
         </h2>
         <ul
-          class="mt-16 list-none mx-auto my-7 flex flex-col sm:flex-row items-center justify-center gap-8"
+          class="mt-10 list-none mx-auto my-2 flex flex-col sm:flex-row items-center justify-center gap-8"
         >
           <a
             href="./html/dinoJump.html"
@@ -146,6 +146,42 @@
           </li>
         </ul>
       </section>
+
+      <hr class="mx-auto bg-black dark:bg-white w-1/2" />
+
+      <!-- scoreboard -->
+      <section
+        id="scores"
+        class="my-10 min-h-[calc(100vh-64px)] 3xl:min-h-200 scroll-m-20 text-center"
+      >
+        <h2
+          class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white"
+        >
+          Scoreboard
+        </h2>
+
+        <article
+          class="mx-auto overflow-x-auto border border-slate-900/30 dark:border-gray-100/30 rounded-xl inline-block"
+        >
+          <!-- dino rankings -->
+          <table
+            id="dinoScoreTable"
+            class="mx-auto sm:w-120 table-auto font-game"
+          >
+            <caption class="font-semibold py-2 text-2xl">
+              Dino Jump Rankings
+            </caption>
+            <thead class="bg-amber-400 dark:bg-amber-600">
+              <tr>
+                <th class="p-2 text-xl font-bold">Rank</th>
+                <th class="p-2 text-xl font-bold">Player</th>
+                <th class="p-2 text-xl font-bold">Score</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white dark:bg-gray-950 text-center"></tbody>
+          </table>
+        </article>
+      </section>
     </main>
   </body>
   <!-- fontawesome cdn -->
@@ -156,4 +192,7 @@
 
   <!-- Light/Dark Theme JS -->
   <script src="./js/theme.js"></script>
+
+  <!-- scoreboard js -->
+  <script src="./js/dinoScore.js"></script>
 </html>

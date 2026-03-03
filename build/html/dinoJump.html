@@ -41,7 +41,11 @@
               class="cursor-pointer hover:opacity-90"
               >Games</a
             >
-            <span class="cursor-pointer hover:opacity-90">Score</span>
+            <a
+              href="../index.html#scores"
+              class="cursor-pointer hover:opacity-90"
+              >Score</a
+            >
           </div>
           <!-- dark/light icons -->
           <div class="ms-5 text-amber-500 hover:text-amber-600 cursor-pointer">
@@ -71,16 +75,18 @@
         </canvas>
       </section>
 
-      <!-- start button -->
+      <!-- game start button -->
       <form
         id="startGame"
         class="my-5 flex flex-col sm:flex-row justify-center items-center gap-5"
       >
         <input
+          id="playerName"
           class="w-60 border border-black/30 dark:border-white/30 rounded text-lg p-3 font-semibold"
           type="text"
           placeholder="Player Name"
           required
+          pattern=".*\S.*"
         />
         <button
           class="w-60 bg-amber-600 p-3 font-semibold rounded text-lg cursor-pointer hover:bg-amber-500 active:bg-amber-400"
@@ -88,6 +94,13 @@
           Game Start!
         </button>
       </form>
+
+      <section
+        id="dinoResult"
+        class="mx-auto max-w-5xl font-semibold text-center"
+      >
+        <!-- result here -->
+      </section>
     </main>
   </body>
 

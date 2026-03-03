@@ -41,22 +41,36 @@ let gravity = 0.4;
 let animationId;
 let cactusInterval;
 
-let gameOver = false;
+let gameOver = true;
 let score = 0;
 
 const startGame = document.querySelector("#startGame");
 let gameStarted = false;
 
+const dinoResult = document.querySelector("#dinoResult");
+const player = document.querySelector("#playerName");
+let playerName;
+let playerScore = {
+    name: null,
+    score: null
+}
+let scoreboard = JSON.parse(localStorage.getItem("dinoScore"));
+if (!scoreboard) scoreboard = [];
+
 startGame.addEventListener("submit", function (e) {
     e.preventDefault();
 
     if (gameStarted) {
-        stopGame();        
+        stopGame();
     }
 
     resetGame();
     gameStarted = true;
     dinoGame();
+
+    playerName = player.value.trim();
+    player.value = "";
+
 });
 
 function dinoGame() {
@@ -102,6 +116,10 @@ function resetGame() {
     // reset game state
     gameOver = false;
     score = 0;
+    playerScore = {
+        name: null,
+        score: null
+    }
 
     // reset dino
     dino.y = dinoY;
@@ -114,6 +132,10 @@ function resetGame() {
     if (context) {
         context.clearRect(0, 0, board.width, board.height);
     }
+
+    // reset results
+    dinoResult.innerHTML = "";
+    playerName = "";
 }
 
 function update() {
@@ -142,6 +164,20 @@ function update() {
             dinoImg.onload = function () {
                 context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
             }
+
+            // Recording Score
+            playerScore.name = playerName;
+            playerScore.score = score + 1;
+            scoreboard.push(playerScore);
+            scoreboard.sort((a, b) => b.score - a.score);
+            if (scoreboard.length > 10) scoreboard.pop();
+
+            localStorage.setItem("dinoScore", JSON.stringify(scoreboard));
+
+            dinoResult.innerHTML = `
+                <h3 class="text-5xl">Game Over!</h3>
+                <h3 class="text-xl"><span class="text-purple-600">${playerScore.name}</span> scored - <span class="text-amber-500">${playerScore.score}</span> points</h3>
+            `;
         }
     }
 
@@ -154,7 +190,7 @@ function update() {
 
 // jump function
 function moveDino(e) {
-    if (gameOver) {        
+    if (gameOver) {
         return;
     }
 
@@ -164,10 +200,12 @@ function moveDino(e) {
     }
 }
 
-// prevent spacebar from re submiting the form
-document.addEventListener("keydown", function(e) {
-    if (e.code === "Space") {
-        e.preventDefault();
+// prevent spacebar from re-submiting the form
+document.addEventListener("keydown", function (e) {
+    if (!gameOver) {
+        if (e.code === "Space") {
+            e.preventDefault();
+        }
     }
 });
 
@@ -188,12 +226,12 @@ function placeCactus() {
 
     let placeCactusChance = Math.random();
 
-    if (placeCactusChance > 0.95) { // 5% chance you get cactus3
+    if (placeCactusChance > 0.90) { // 10% chance you get cactus3
         cactus.img = cactus03Img;
         cactus.width = cactus03Width;
         cactusArray.push(cactus);
     }
-    else if (placeCactusChance > 0.70) { // 25% chance you get cactus2
+    else if (placeCactusChance > 0.70) { // 20% chance you get cactus2
         cactus.img = cactus02Img;
         cactus.width = cactus02Width;
         cactusArray.push(cactus);
