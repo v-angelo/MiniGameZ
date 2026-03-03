@@ -36,9 +36,25 @@
           <span class="sun"><i class="fa-regular fa-sun"></i></span>
           <span class="moon"><i class="fa-regular fa-moon"></i></span>
         </div>
-        <div class="sm:hidden text-3xl font-bold">☰</div>
+        <!-- menuButton -->
+        <button id="hamburger-button" class="sm:hidden mr-4 text-4xl relative">
+          <div id="hamburger-icon" class="cursor-pointer">☰</div>
+          <div id="cross-icon" class="text-6xl absolute hidden -top-9 -right-7">
+            ×
+          </div>
+        </button>
       </section>
     </nav>
+    <!-- mobile menu -->
+    <section id="mobile-menu"
+      class="animate-slideDown origin-top absolute top-16 text-black dark:text-white dark:bg-gray-950 bg-slate-100 w-full text-4xl flex-col justify-center hidden">
+      <!-- <button class="text-6xl self-end px-6 cursor-pointer">&times;</button> -->
+      <nav class="flex flex-col min-h-screen items-center pt-30" aria-label="mobile">
+        <a href="#hero" class="w-full font-semibold text-center py-10 hover:opacity-90">Home</a>
+        <a href="#games" class="w-full font-semibold text-center py-10 hover:opacity-90">Games</a>
+        <a href="#scores" class="w-full font-semibold text-center py-10 hover:opacity-90">Score</a>
+      </nav>
+    </section>
   </header>
 
   <main class="max-w-5xl mx-auto">
@@ -49,7 +65,7 @@
         <h2
           class="max-w-md sm:text-5xl text-4xl font-bold text-center md:text-6xl md:text-left text-slate-900 dark:text-white">
           Welcome to
-          <span class="text-amber-500 dark:text-amber-400">MiniGames Zone</span>
+          <span class="text-amber-500 dark:text-amber-400">MiniGame Zone</span>
         </h2>
         <p class="max-w-md mt-4 text-center md:text-left text-slate-700 dark:text-slate-400">
           Your one-stop destination for quick fun, instant challenges, and
@@ -68,13 +84,13 @@
 
     <!-- games section -->
     <section id="games"
-      class="max-sm:min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-64px)] p-6 max-xs:p-0 my-10 scroll-m-15">
+      class="min-h-[calc(100vh-64px)] 3xl:min-h-200 p-6 max-xs:p-0 my-10 scroll-m-20">
       <h2 class="text-4xl font-bold text-center sm:text-5xl text-slate-900 dark:text-white">
         Our Games
       </h2>
-      <ul class="mt-10 list-none mx-auto my-2 flex flex-col sm:flex-row items-center justify-center gap-8">
+      <ul class="mt-10 list-none mx-auto my-2 flex flex-col md:flex-row items-center justify-center gap-8">
         <a href="./html/dinoJump.html"
-          class="w-2/3 sm:w-5/6 flex flex-col items-center justify-center border hover:ring border-solid border-slate-900/30 dark:border-gray-100/30 bg-white dark:bg-gray-950 py-6 px-2 rounded-3xl shadow-xl">
+          class="w-75 flex flex-col items-center justify-center border hover:ring border-solid border-slate-900/30 dark:border-gray-100/30 bg-white dark:bg-gray-950 py-6 px-2 rounded-3xl shadow-xl">
           <img src="./img/dinoJump.png" alt="dinoImg"
             class="w-2/3 mb-6 border border-slate-900/30 dark:border-gray-100/30 rounded-xl" />
           <h3 class="text-2xl text-center text-slate-900 dark:text-white">
@@ -86,7 +102,7 @@
           </p>
         </a>
         <li
-          class="w-2/3 sm:w-5/6 flex flex-col items-center justify-center border hover:ring border-solid border-slate-900/30 dark:border-gray-100/30 bg-white dark:bg-gray-950 py-6 px-2 rounded-3xl shadow-xl cursor-pointer">
+          class="w-75 flex flex-col items-center justify-center border hover:ring border-solid border-slate-900/30 dark:border-gray-100/30 bg-white dark:bg-gray-950 py-6 px-2 rounded-3xl shadow-xl cursor-pointer">
           <img src="./img/RPS.jpg" alt="rpsImg"
             class="w-2/3 mb-6 border border-slate-900/30 dark:border-gray-100/30 rounded-xl" />
           <h3 class="text-2xl text-center text-slate-900 dark:text-white">
@@ -98,7 +114,7 @@
           </p>
         </li>
         <li
-          class="w-2/3 sm:w-5/6 flex flex-col items-center justify-center border hover:ring border-solid border-slate-900/30 dark:border-gray-100/30 bg-white dark:bg-gray-950 py-6 px-2 rounded-3xl shadow-xl cursor-pointer">
+          class="w-75 flex flex-col items-center justify-center border hover:ring border-solid border-slate-900/30 dark:border-gray-100/30 bg-white dark:bg-gray-950 py-6 px-2 rounded-3xl shadow-xl cursor-pointer">
           <img src="./img/TTT.jpg" alt="tttImg"
             class="w-2/3 mb-6 border border-slate-900/30 dark:border-gray-100/30 rounded-xl" />
           <h3 class="text-2xl text-center text-slate-900 dark:text-white">
@@ -120,12 +136,12 @@
         Scoreboard
       </h2>
 
-      <article
+      <article id="dinoScoreboard"
         class="mx-auto overflow-x-auto border border-slate-900/30 dark:border-gray-100/30 rounded-xl inline-block">
         <!-- dino rankings -->
         <table id="dinoScoreTable" class="mx-auto xs:w-120 table-auto font-game">
           <caption class="font-semibold py-2 text-2xl">
-            Dino Jump Rankings
+            Dino Jump Leaderboard
           </caption>
           <thead class="bg-amber-400 dark:bg-amber-600">
             <tr>
@@ -141,13 +157,14 @@
   </main>
 
   <!-- footer -->
-  <footer class="bg-purple-600 dark:bg-purple-950 py-3">
+  <footer id="#footer" class="bg-purple-600 dark:bg-purple-950 py-3">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm">
 
       <!-- logo and title -->
       <a class="w-45 flex justify-between hover:opacity-90" href="#">
         <img class="w-10" src="./img/icon.png" alt="logo" />
-        <h3 class="flex items-center justify-center text-lg font-semibold hover:text-purple-300 dark:hover:text-purple-400 transition">
+        <h3
+          class="flex items-center justify-center text-lg font-semibold hover:text-purple-300 dark:hover:text-purple-400 transition">
           MiniGame Zone
         </h3>
       </a>
@@ -178,6 +195,9 @@
 
 <!-- Light/Dark Theme JS -->
 <script src="./js/theme.js"></script>
+
+<!-- mobile menu -->
+<script src="./js/mobileMenu.js"></script>
 
 <!-- scoreboard js -->
 <script src="./js/dinoScore.js"></script>

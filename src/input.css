@@ -8,6 +8,7 @@
     --breakpoint-xs: 32rem;
     --breakpoint-md: 53rem;
     --breakpoint-3xl: 121rem;
+    
     --animate-slideDown: openMenu 0.5s ease-in-out forwards;
 
     @keyframes openMenu {

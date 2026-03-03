@@ -57,6 +57,7 @@ let playerScore = {
 let scoreboard = JSON.parse(localStorage.getItem("dinoScore"));
 if (!scoreboard) scoreboard = [];
 
+// game start button
 startGame.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -73,6 +74,7 @@ startGame.addEventListener("submit", function (e) {
 
 });
 
+// game logic
 function dinoGame() {
     board = document.getElementById("board");
     board.width = boardWidth;
@@ -116,6 +118,7 @@ function resetGame() {
     // reset game state
     gameOver = false;
     score = 0;
+    playerName = "";
     playerScore = {
         name: null,
         score: null
@@ -135,7 +138,6 @@ function resetGame() {
 
     // reset results
     dinoResult.innerHTML = "";
-    playerName = "";
 }
 
 function update() {
@@ -176,7 +178,7 @@ function update() {
 
             dinoResult.innerHTML = `
                 <h3 class="text-5xl">Game Over!</h3>
-                <h3 class="text-xl"><span class="text-purple-600">${playerScore.name}</span> scored - <span class="text-amber-500">${playerScore.score}</span> points</h3>
+                <h3 class="text-xl"><span class="text-purple-600">${playerScore.name}</span> scored <span class="text-amber-500">${playerScore.score}</span> points</h3>
             `;
         }
     }

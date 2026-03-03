@@ -1,118 +1,101 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MiniGame Zone</title>
-    <!-- favicon -->
-    <link rel="icon" href="../img/icon.ico" />
-    <!-- css -->
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
 
-  <body class="min-h-screen dark:bg-slate-950 bg-slate-50 dark:text-white">
-    <!-- header -->
-    <header class="bg-purple-600 dark:bg-purple-950 sticky top-0 z-10">
-      <!-- navbar -->
-      <nav
-        class="flex flex-row lg:max-w-5xl mx-auto px-3 py-2 h-16 justify-between"
-      >
-        <!-- logo and title -->
-        <a
-          class="w-60 flex justify-between hover:opacity-90"
-          href="../index.html"
-        >
-          <img class="h-full" src="../img/icon.png" alt="logo" />
-          <h3 class="flex items-center justify-center text-2xl font-semibold">
-            MiniGame Zone
-          </h3>
-        </a>
-        <!-- dark/light toggle -->
-        <section
-          class="flex justify-evenly items-center text-2xl font-semibold gap-4"
-        >
-          <!-- links -->
-          <div class="flex w-70 justify-between max-sm:hidden">
-            <a href="../index.html" class="cursor-pointer hover:opacity-90"
-              >Home</a
-            >
-            <a
-              href="../index.html#games"
-              class="cursor-pointer hover:opacity-90"
-              >Games</a
-            >
-            <a
-              href="../index.html#scores"
-              class="cursor-pointer hover:opacity-90"
-              >Score</a
-            >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniGame Zone</title>
+  <!-- favicon -->
+  <link rel="icon" href="../img/icon.ico" />
+  <!-- css -->
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="min-h-screen dark:bg-slate-950 bg-slate-50 dark:text-white">
+  <!-- header -->
+  <header class="bg-purple-600 dark:bg-purple-950 sticky top-0 z-10">
+    <!-- navbar -->
+    <nav class="flex flex-row lg:max-w-5xl mx-auto px-3 py-2 h-16 justify-between">
+      <!-- logo and title -->
+      <a class="w-60 flex justify-between hover:opacity-90" href="../index.html">
+        <img class="h-full" src="../img/icon.png" alt="logo" />
+        <h3 class="flex items-center justify-center text-2xl font-semibold">
+          MiniGame Zone
+        </h3>
+      </a>
+      <!-- dark/light toggle -->
+      <section class="flex justify-evenly items-center text-2xl font-semibold gap-4">
+        <!-- links -->
+        <div class="flex w-70 justify-between max-sm:hidden">
+          <a href="../index.html" class="cursor-pointer hover:opacity-90">Home</a>
+          <a href="../index.html#games" class="cursor-pointer hover:opacity-90">Games</a>
+          <a href="../index.html#scores" class="cursor-pointer hover:opacity-90">Score</a>
+        </div>
+        <!-- dark/light icons -->
+        <div class="ms-5 text-amber-500 hover:text-amber-600 cursor-pointer">
+          <span class="sun"><i class="fa-regular fa-sun"></i></span>
+          <span class="moon"><i class="fa-regular fa-moon"></i></span>
+        </div>
+        <!-- menuButton -->
+        <button id="hamburger-button" class="sm:hidden mr-4 text-4xl relative">
+          <div id="hamburger-icon" class="cursor-pointer">☰</div>
+          <div id="cross-icon" class="text-6xl absolute hidden -top-9 -right-7">
+            ×
           </div>
-          <!-- dark/light icons -->
-          <div class="ms-5 text-amber-500 hover:text-amber-600 cursor-pointer">
-            <span class="sun"><i class="fa-regular fa-sun"></i></span>
-            <span class="moon"><i class="fa-regular fa-moon"></i></span>
-          </div>
-          <div class="sm:hidden text-3xl font-bold">☰</div>
-        </section>
-      </nav>
-    </header>
-
-    <!-- game -->
-    <main class="font-game">
-      <!-- title -->
-      <h1
-        class="text-4xl font-bold text-center sm:text-5xl my-5 text-slate-900 dark:text-white"
-      >
-        Dino Jump Game
-      </h1>
-
-      <!-- game board -->
-      <section class="overflow-x-auto">
-        <canvas
-          id="board"
-          class="mx-auto bg-slate-400 dark:bg-slate-700 border-b-2"
-        >
-        </canvas>
-      </section>
-
-      <!-- game start button -->
-      <form
-        id="startGame"
-        class="my-5 flex flex-col sm:flex-row justify-center items-center gap-5"
-      >
-        <input
-          id="playerName"
-          class="w-60 border border-black/30 dark:border-white/30 rounded text-lg p-3 font-semibold"
-          type="text"
-          placeholder="Player Name"
-          required
-          pattern=".*\S.*"
-        />
-        <button
-          class="w-60 bg-amber-600 p-3 font-semibold rounded text-lg cursor-pointer hover:bg-amber-500 active:bg-amber-400"
-        >
-          Game Start!
         </button>
-      </form>
-
-      <section
-        id="dinoResult"
-        class="mx-auto max-w-5xl font-semibold text-center"
-      >
-        <!-- result here -->
       </section>
-    </main>
-  </body>
+    </nav>
+    <!-- mobile menu -->
+    <section id="mobile-menu"
+      class="animate-slideDown origin-top absolute top-16 text-black dark:text-white dark:bg-gray-950 bg-slate-100 w-full text-4xl flex-col justify-center hidden">
+      <!-- <button class="text-6xl self-end px-6 cursor-pointer">&times;</button> -->
+      <nav class="flex flex-col min-h-screen items-center pt-30" aria-label="mobile">
+        <a href="../index.html#hero" class="w-full font-semibold text-center py-10 hover:opacity-90">Home</a>
+        <a href="../index.html#games" class="w-full font-semibold text-center py-10 hover:opacity-90">Games</a>
+        <a href="../index.html#scores" class="w-full font-semibold text-center py-10 hover:opacity-90">Score</a>
+      </nav>
+    </section>
+  </header>
 
-  <!-- fontawesome cdn -->
-  <script
-    src="https://kit.fontawesome.com/7e59fb41a7.js"
-    crossorigin="anonymous"
-  ></script>
+  <!-- game -->
+  <main class="font-game">
+    <!-- title -->
+    <h1 class="text-4xl font-bold text-center sm:text-5xl my-5 text-slate-900 dark:text-white">
+      Dino Jump Game
+    </h1>
 
-  <!-- Light/Dark Theme JS -->
-  <script src="../js/theme.js"></script>
+    <!-- game board -->
+    <section class="overflow-x-auto">
+      <canvas id="board" class="mx-auto bg-slate-400 dark:bg-slate-700 border-b-2">
+      </canvas>
+    </section>
 
-  <!-- dino jump js -->
-  <script src="../js/dinoJump.js"></script>
+    <!-- game start button -->
+    <form id="startGame" class="my-5 flex flex-col sm:flex-row justify-center items-center gap-5">
+      <input id="playerName" class="w-60 border border-black/30 dark:border-white/30 rounded text-lg p-3 font-semibold"
+        type="text" placeholder="Player Name" required pattern=".*\S.*" />
+      <button
+        class="w-60 bg-amber-600 p-3 font-semibold rounded text-lg cursor-pointer hover:bg-amber-500 active:bg-amber-400">
+        Game Start!
+      </button>
+    </form>
+
+    <section id="dinoResult" class="mx-auto max-w-5xl font-semibold text-center">
+      <!-- result here -->
+    </section>
+  </main>
+</body>
+
+<!-- fontawesome cdn -->
+<script src="https://kit.fontawesome.com/7e59fb41a7.js" crossorigin="anonymous"></script>
+
+<!-- Light/Dark Theme JS -->
+<script src="../js/theme.js"></script>
+
+<!-- dino jump js -->
+<script src="../js/dinoJump.js"></script>
+
+<!-- mobile menu -->
+<script src="../js/mobileMenu.js"></script>
+
 </html>
